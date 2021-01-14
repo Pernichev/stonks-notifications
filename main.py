@@ -6,6 +6,7 @@ from Logger import getLogger
 
 import datetime
 
+API_KEY = ''
 ticker = 'PLUG'
 
 while True:
@@ -13,7 +14,7 @@ while True:
     t = datetime.datetime.utcnow().strftime('%d-%m-%Y %H:%M:%S')
     print("{t}\nChecking price on {ticker}...\n".format(t=t, ticker=ticker))
     #Getting the data from alpha_vantage
-    ts = TimeSeries(key='', output_format='pandas')
+    ts = TimeSeries(API_KEY, output_format='pandas')
     data, meta_data = ts.get_intraday(ticker, interval='5min', outputsize='full')
 
     #We are currently interested in the latest price
